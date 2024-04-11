@@ -29,4 +29,4 @@ class Memory(Base):
     description = Column(String)
     created_time = Column(DateTime)
     embedding = Column(String)
-
+    importance = Column(Integer)
