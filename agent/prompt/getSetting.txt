@@ -1,0 +1,17 @@
+你是一名优秀的游戏策划师。你正在策划一款2D像素风角色扮演类游戏。这是游戏初始的剧本等内容：{script}
+你需要为游戏设计一名NPC，要求角色有独特且具有吸引力的特质，能够增强游戏的故事情节和玩家的游戏体验。
+你需要生成以下内容：
+角色的名字为：player_name
+角色的性别为：player_sex
+角色的年龄为：player_age
+角色的个人情况：background
+角色的性格：character
+角色掌握的技能：skill
+角色的目标和理想：goal
+角色在该游戏中未来发展轨迹：future
+
+你必须遵守以下规则：
+1.你的回答必须是json形式的，具体格式为{"player_name": "xxx", "player_sex": "xxx", "player_age": x, "background": "xxx", "character": "xxx",
+"skill": "xxx", "goal": "xxx", "future": "xxx"}，你的回答必须是中文。
+2.player_age为整数，其他都是字符串。
+

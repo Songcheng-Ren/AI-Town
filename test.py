@@ -1,7 +1,11 @@
+import uvicorn
 from fastapi import FastAPI, WebSocket
 from fastapi.responses import HTMLResponse
-
+from api.websocket import chat_endpoint, npc_state_endpoint, ConnectionManager, turtle_endpoint
 app = FastAPI()
+manager = ConnectionManager()
+from agent.utils.llm import LLMCaller
+from agent.prompt.prompt import Prompt
 
 html = """
 <!DOCTYPE html>
@@ -44,8 +48,18 @@ async def get():
 
 
 @app.websocket("/ws")
-async def websocket_endpoint(websocket: WebSocket):
-    await websocket.accept()
-    while True:
-        data = await websocket.receive_text()
-        await websocket.send_text(f"Message text was: {data}")
+async def websocket_turtle(websocket: WebSocket):
+    await turtle_endpoint(websocket, manager)
+
+# @app.websocket("/ws")
+# async def websocket_endpoint(websocket: WebSocket):
+#     await websocket.accept()
+#     caller = LLMCaller('custom')
+#     while True:
+#         data = await websocket.receive_text()
+#         response = await caller.ask(data)
+#         await websocket.send_text(f"Message text was: {response}")
+
+
+if __name__ == '__main__':
+    uvicorn.run(app, host="127.0.0.1", port=8000)

@@ -4,6 +4,7 @@ import json
 
 abs_path = os.path.dirname(os.path.realpath(__file__))
 
+
 class Prompt:
     def __init__(self, part: str) -> None:
         self.text = ""
